@@ -3,22 +3,11 @@
 @section('content')
     <!-- Slider -->
     <div class="tf-slideshow slider-effect-fade position-relative">
-        <div dir="ltr" class="swiper tf-sw-slideshow swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden" data-preview="1" data-tablet="1" data-mobile="1" data-centered="false" data-space="0" data-loop="true" data-auto-play="true" data-delay="0" data-speed="1000">
-            <div class="swiper-wrapper" id="swiper-wrapper-fe1de996e392580a" aria-live="polite" style="transform: translate3d(-1880px, 0px, 0px); transition-duration: 0ms;"><div class="swiper-slide swiper-slide-duplicate swiper-slide-prev" data-swiper-slide-index="2" style="width: 1880px;" role="group" aria-label="3 / 3">
+        <div dir="ltr" class="tf-sw-slideshow" data-preview="1" data-tablet="1" data-mobile="1" data-centered="false" data-space="0" data-loop="true" data-auto-play="true" data-delay="0" data-speed="1000">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
                     <div class="wrap-slider">
-                        <img src="images/slider/fashion-slideshow-03.jpg" alt="fashion-slideshow">
-                        <div class="box-content">
-                            <div class="container">
-                                <h1 class="fade-item fade-item-1">Timeless African Elegance!</h1>
-                                <p class="fade-item fade-item-2">Showcasing vibrant, authentic styles that connect you to tradition and culture.</p>
-                                <a href="{{ route('shop') }}" class="fade-item fade-item-3 tf-btn btn-fill animate-hover-btn btn-xl radius-3"><span>Shop collection</span><i class="icon icon-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide swiper-slide-active" data-swiper-slide-index="0" style="width: 1880px;" role="group" aria-label="1 / 3">
-                    <div class="wrap-slider">
-                        <img src="images/slider/fashion-slideshow-01.jpg" alt="fashion-slideshow">
+                        <img src="{{ asset('images/slider/fashion-slideshow-01.jpg') }}" alt="fashion-slideshow">
                         <div class="box-content">
                             <div class="container">
                                 <h1 class="fade-item fade-item-1">Step Into African Fashion</h1>
@@ -28,9 +17,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide swiper-slide-next" data-swiper-slide-index="1" style="width: 1880px;" role="group" aria-label="2 / 3">
+                <div class="swiper-slide">
                     <div class="wrap-slider">
-                        <img src="images/slider/fashion-slideshow-05.jpg" alt="fashion-slideshow">
+                        <img src="{{ asset('images/slider/fashion-slideshow-02.jpg') }}" alt="fashion-slideshow">
                         <div class="box-content">
                             <div class="container">
                                 <h1 class="fade-item fade-item-1">Timeless African Elegance <br class="md-hidden"></h1>
@@ -40,9 +29,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide swiper-slide-duplicate-prev" data-swiper-slide-index="2" style="width: 1880px;" role="group" aria-label="3 / 3">
+                <div class="swiper-slide">
                     <div class="wrap-slider">
-                        <img src="images/slider/fashion-slideshow-04.jpg" alt="fashion-slideshow">
+                        <img src="{{ asset('images/slider/fashion-slideshow-03.jpg') }}" alt="fashion-slideshow">
                         <div class="box-content">
                             <div class="container">
                                 <h1 class="fade-item fade-item-1">Bold, Beautiful, African</h1>
@@ -50,12 +39,12 @@
                                 <a href="{{ route('shop') }}" class="fade-item fade-item-3 tf-btn btn-fill animate-hover-btn btn-xl radius-3"><span>Shop collection</span><i class="icon icon-arrow-right"></i></a>
                             </div>
                         </div>
-
                     </div>
                 </div>
-                <div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active" data-swiper-slide-index="0" role="group" aria-label="1 / 3" style="width: 1880px;">
+
+                <div class="swiper-slide">
                     <div class="wrap-slider">
-                        <img src="images/slider/fashion-slideshow-01.jpg" alt="fashion-slideshow">
+                        <img src="{{ asset('images/slider/fashion-slideshow-05.jpg') }}" alt="fashion-slideshow">
                         <div class="box-content">
                             <div class="container">
                                 <h1 class="fade-item fade-item-1">Glamorous<br>Glam</h1>
@@ -65,11 +54,42 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
-        <div class="wrap-pagination">
-            <div class="container">
-                <div class="sw-dots sw-pagination-slider justify-content-center swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 1" aria-current="true"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 3"></span></div>
+                <div class="swiper-slide">
+                    <div class="wrap-slider">
+                        <img src="{{ asset('images/slider/fashion-slideshow-06.jpg') }}" alt="fashion-slideshow">
+                        <div class="box-content">
+                            <div class="container">
+                                <h1 class="fade-item fade-item-1">Glamorous<br>Glam</h1>
+                                <p class="fade-item fade-item-2">From casual to formal, we've got you covered</p>
+                                <a href="{{ route('shop') }}" class="fade-item fade-item-3 tf-btn btn-fill animate-hover-btn btn-xl radius-3"><span>Shop collection</span><i class="icon icon-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="wrap-slider">
+                        <img src="{{ asset('images/slider/fashion-slideshow-07.jpg') }}" alt="fashion-slideshow">
+                        <div class="box-content">
+                            <div class="container">
+                                <h1 class="fade-item fade-item-1">Glamorous<br>Glam</h1>
+                                <p class="fade-item fade-item-2">From casual to formal, we've got you covered</p>
+                                <a href="{{ route('shop') }}" class="fade-item fade-item-3 tf-btn btn-fill animate-hover-btn btn-xl radius-3"><span>Shop collection</span><i class="icon icon-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide ">
+                    <div class="wrap-slider">
+                        <img src="{{ asset('images/slider/fashion-slideshow-08.jpg') }}" alt="fashion-slideshow">
+                        <div class="box-content">
+                            <div class="container">
+                                <h1 class="fade-item fade-item-1">Glamorous<br>Glam</h1>
+                                <p class="fade-item fade-item-2">From casual to formal, we've got you covered</p>
+                                <a href="{{ route('shop') }}" class="fade-item fade-item-3 tf-btn btn-fill animate-hover-btn btn-xl radius-3"><span>Shop collection</span><i class="icon icon-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -160,36 +180,8 @@
                     <div class="tab-pane active show" id="bestSeller" role="tabpanel">
                         <div class="grid-layout loadmore-item" data-grid="grid-4">
                            @foreach($products as $product)
-                                <!-- card product 1 -->
-                                <div class="card-product fl-item" data-product-id="{{ $product->id }}">
-                                    <div class="card-product-wrapper" >
-                                        <a href="{{ route('products', $product->slug) }}" class="product-img">
-                                            <img class="lazyload img-product" data-src="{{ \Illuminate\Support\Facades\Storage::url($product->image) }}" src="{{ \Illuminate\Support\Facades\Storage::url($product->image) }}" alt="{{$product->slug}}">
-                                            <img class="img-hover ls-is-cached lazyloaded" data-src="{{ \Illuminate\Support\Facades\Storage::url($product->image) }}" src="{{ \Illuminate\Support\Facades\Storage::url($product->image)}}" alt="{{$product->slug}}">
-                                        </a>
-                                        <div class="list-product-btn">
-                                            <a href="#quick_add" data-bs-toggle="modal" class="box-icon bg_white quick-add tf-btn-loading">
-                                                <span class="icon icon-bag"></span>
-                                                <span class="tooltip">Quick Add</span>
-                                            </a>
-                                            <a href="javascript:void(0);" class="box-icon bg_white wishlist btn-icon-action">
-                                                <span class="icon icon-heart"></span>
-                                                <span class="tooltip">Add to Wishlist</span>
-                                                <span class="icon icon-delete"></span>
-                                            </a>
-
-                                            <a href="#quick_view" data-bs-toggle="modal" class="box-icon bg_white quickview tf-btn-loading">
-                                                <span class="icon icon-view"></span>
-                                                <span class="tooltip">Quick View</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="card-product-info">
-                                        <a href="{{ route('products', $product->slug) }}" class="title link">{{ $product->name }}</a>
-                                        <span class="price">{{ $product->getPrice()}}</span>
-
-                                    </div>
-                                </div>
+                                <!-- card product -->
+                                @livewire('product-card', ['product' => $product], key($product->id))
                            @endforeach
                         </div>
                         <div class="tf-pagination-wrap view-more-button text-center">
@@ -200,35 +192,8 @@
                         <div class="grid-layout loadmore-item2" data-grid="grid-4">
                             @foreach($newArrivals as $product)
                                 <!-- card product 1 -->
-                                <div class="card-product fl-item" data-product-id="{{ $product->id }}">
-                                    <div class="card-product-wrapper">
-                                        <a href="{{ route('products', $product->slug) }}" class="product-img">
-                                            <img class="lazyload img-product" data-src="{{ \Illuminate\Support\Facades\Storage::url($product->image) }}" src="{{ \Illuminate\Support\Facades\Storage::url($product->image) }}" alt="{{$product->slug}}">
-                                            <img class="img-hover ls-is-cached lazyloaded" data-src="{{ \Illuminate\Support\Facades\Storage::url($product->image) }}" src="{{ \Illuminate\Support\Facades\Storage::url($product->image)}}" alt="{{$product->slug}}">
-                                        </a>
-                                        <div class="list-product-btn">
-                                            <a href="#quick_add" data-bs-toggle="modal" class="box-icon bg_white quick-add tf-btn-loading">
-                                                <span class="icon icon-bag"></span>
-                                                <span class="tooltip">Quick Add</span>
-                                            </a>
-                                            <a href="javascript:void(0);" class="box-icon bg_white wishlist btn-icon-action">
-                                                <span class="icon icon-heart"></span>
-                                                <span class="tooltip">Add to Wishlist</span>
-                                                <span class="icon icon-delete"></span>
-                                            </a>
+                                @livewire('product-card', ['product' => $product], key($product->id))
 
-                                            <a href="#quick_view" data-bs-toggle="modal" class="box-icon bg_white quickview tf-btn-loading">
-                                                <span class="icon icon-view"></span>
-                                                <span class="tooltip">Quick View</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="card-product-info">
-                                        <a href="{{ route('products', $product->slug) }}" class="title link">{{ $product->name }}</a>
-                                        <span class="price">{{ $product->getPrice()}}</span>
-
-                                    </div>
-                                </div>
                             @endforeach
                         <div class="tf-pagination-wrap view-more-button2 text-center">
                             <button class="tf-btn-loading tf-loading-default style-2 btn-loadmore2"><span class="text">Load more</span></button>
@@ -330,6 +295,26 @@
     <!-- /Location -->
 @endsection
 
-@push('scripts')
+@push('styles')
+    <style>
 
+        /* Default styles */
+        .swiper-container {
+            /* Define your container styles */
+        }
+
+        .tf-slideshow .swiper-slide img {
+            width: 100%;  /* Ensure the image takes the full width of the slide */
+            height: auto;
+            object-fit: cover; /* Make sure the image covers the area properly */
+        }
+
+        /* Mobile-specific styles */
+        @media (max-width: 768px) {
+            .tf-slideshow .swiper-slide img {
+                position: relative; /* Adjust based on your design needs */
+                left: 0;  /* Modify this value to move the image to the right/left */
+            }
+        }
+    </style>
 @endpush

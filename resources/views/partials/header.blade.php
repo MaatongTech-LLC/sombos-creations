@@ -1,5 +1,5 @@
 <!-- Header -->
-<header id="header" class="header-default" style="top: unset; z-index: 99;">
+<header id="header" class="header-default" style="top: unset; z-index: 9;">
     <div class="px_15 lg-px_40">
         <div class="row wrapper-header align-items-center">
             <div class="col-md-4 col-3 tf-lg-hidden">
@@ -39,14 +39,16 @@
             </div>
             <div class="col-xl-3 col-md-4 col-3">
                 <ul class="nav-icon d-flex justify-content-end align-items-center gap-20">
-                    <li class="nav-account"><a href="{{ auth()->user() === null ? '#login' : route('my-account') }}" @guest  data-bs-toggle="modal" @endguest class="nav-icon-item"><i class="icon icon-account"></i> @auth{{ auth()->user()->firstname }}@endauth</a></li>
+                    <li class="nav-account"><a href="{{ auth()->user() === null ? '#login' : route('my-account') }}" @guest  data-bs-toggle="modal" @endguest class="nav-icon-item"><i class="icon icon-account"></i> @auth{{ auth()->user()->firstname }}@endauth @guest Login @endguest</a></li>
                     <li class="nav-wishlist">
                         <a href="{{ auth()->user() === null ? '#login' : route('my-account.wishlist') }}" @guest data-bs-toggle="modal" @endguest class="nav-icon-item">
                             <i class="icon icon-heart"></i>
-                            <span class="count-box">@guest 0 @endguest @auth {{ auth()->user()->wishlists()->count() }} @endauth</span>
+                           @auth
+                                <span class="count-box" id="wishlistCount">{{ auth()->user()->wishlists()->count() }}</span>
+                           @endauth
                         </a>
                     </li>
-                    <li class="nav-cart"><a href="#shoppingCart" data-bs-toggle="modal" class="nav-icon-item"><i class="icon icon-bag"></i><span class="count-box">0</span></a></li>
+                    <li class="nav-cart"><a href="#shoppingCart" data-bs-toggle="modal" class="nav-icon-item"><i class="icon icon-bag"></i><span id="shoppingCartCount" class="count-box">{{ count($items) }}</span></a></li>
                 </ul>
             </div>
         </div>

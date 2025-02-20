@@ -23,6 +23,14 @@
 
     <link rel="stylesheet" href="{{ asset('vendor/flasher/flasher.min.css') }}">
 
+    <style>
+        .swal2-toast {
+            font-size: 0.85rem!important; /* Adjust font size */
+            padding: 0.5rem!important;    /* Adjust padding */
+            width: auto !important; /* Let it size automatically */
+            height: max-content !important;
+        }
+    </style>
     @stack('styles')
 
 </head>
@@ -36,6 +44,21 @@
 </div>
 <!-- /preload -->
 <div id="wrapper">
+
+    @php
+        use Illuminate\Support\Facades\Auth;
+        use Illuminate\Support\Facades\Session;
+
+        $subTotal = 0;
+
+        if (Auth::check()) {
+            $items = auth()->user()->cart()->with('product')->get();
+        } else {
+            $items = collect(Session::get('cart', []));
+        }
+    @endphp
+
+
     @include('partials.header')
 
     @yield('content')
@@ -58,10 +81,8 @@
 @include('modals.canvas-search')
 {{--@include('modals.toolbar-shop')--}}
 @include('modals.login')
-@include('modals.shopping-cart')
-@include('modals.compare')
-@include('modals.quick-add')
-@include('modals.quick-view')
+<livewire:modals.shopping-cart></livewire:modals.shopping-cart>
+<livewire:modals.quick-view></livewire:modals.quick-view>
 @include('modals.find-size')
 @include('modals.filter-shop')
 
@@ -82,54 +103,23 @@
 
 <script src="{{ asset('vendor/flasher/flasher.min.js') }}"></script>
 
-<script>
-    $('.card-product').each(function() {
-        let quickviewBtn = $(this).find('.quickview');
-        let el = $(this);
-
-        quickviewBtn.click(function() {
-            let productId = el.data('productId');
-
-            $.ajax({
-                url: "/product/" + productId,
-                method: "GET",
-                success: function(response) {
-                    if (response.success) {
-                        console.log(response.data);
-
-/*                        let swiperWrapper = $('.swiper-wrapper');
-                        swiperWrapper.empty();
-
-                        response.data.images.forEach(function(image) {
-                            let imageHtml = `
-                                       <div class="swiper-slide">
-                                        <div class="item">
-                                            <img src="${image.image_url}" alt="">
-                                        </div>
-                                    </div>`;
-                            swiperWrapper.append(imageHtml);
-                        });
-
-                        swiper.update();*/
-
-                        $('#productName').text(response.data.name);
-                        $('#productName').attr('href', `/products/${productId}`);
-                        $('#productDescription').text(response.data.description);
-                        $('#productPrice').text('$' + response.data.price);
-                        $('.tf-qty-price').text('$' + response.data.price);
-                        $('#productLink').attr('href', `/products/${productId}`);
-                        $('#productImage').attr('src', 'storage/' + response.data.image);
 
 
-                    }
-                },
-            })
-        });
-    });
-</script>
+@livewireScripts
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<x-livewire-alert::scripts />
 @stack('scripts')
 
+<script>
+    Livewire.on('cart:count', (count) => {
+        $('#shoppingCartCount').text(count);
+    });
+
+    Livewire.on('wishlist:updated', (count) => {
+        $('#wishlistCount').text(count);
+    });
+</script>
 </body>
 
 </html>

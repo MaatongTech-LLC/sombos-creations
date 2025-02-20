@@ -9,42 +9,42 @@ use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
 
 // Authentication Routes
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-
 Route::get('/about', function() {
    return view('about');
 })->name('about');
-
 Route::get('/contacts', function() {
     return view('contacts');
 })->name('contacts');
-
-
 Route::get('shop', [ShopController::class, 'index'])->name('shop');
 Route::get('collections', [ShopController::class, 'collections'])->name('collections');
-
 Route::get('/products/{slug}', [HomeController::class, 'products'])->name('products');
 Route::get('/product/{id}', [HomeController::class, 'productAjax'])->name('products.ajax');
 
+/*Route::get('/cart', [CartController::class, 'index'])->name('cart');
+Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
+Route::post('/cart/update', [CartController::class, 'update'])->name('cart.update');
+Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
+Route::post('/cart/empty', [CartController::class, 'empty'])->name('cart.empty');*/
+
+
 
 // Terms and conditions
-Route::get('terms-conditions', function() {
-    return view('terms-conditions');
-})->name('terms-conditions');
-
+Route::get('terms-conditions', function() {return view('terms-conditions');})->name('terms-conditions');
 // Privacy Policy
-Route::get('privacy-policy', function() {
-    return view('privacy-policy');
-})->name('privacy-policy');
+Route::get('privacy-policy', function() {return view('privacy-policy');})->name('privacy-policy');
 
 Route::middleware('auth-customer')->group(function() {
     // My Account
@@ -54,17 +54,33 @@ Route::middleware('auth-customer')->group(function() {
        Route::get('/orders/{id}', [AccountController::class, 'orderDetails'])->name('my-account.orders.details');
 
        Route::get('/account-details', [AccountController::class, 'accountDetails'])->name('my-account.account-details');
+       Route::post('/account-details', [AccountController::class, 'accountDetailsUpdate'])->name('my-account.account-details.update');
+
        Route::get('/address', [AccountController::class, 'address'])->name('my-account.address');
        Route::get('/wishlist', [AccountController::class, 'wishlist'])->name('my-account.wishlist');
-
    });
+        // Checkout Routes
+       Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+       Route::post('/checkout', [CheckoutController::class, 'post'])->name('checkout.post');
+
+       // Payment Routes
+       Route::post('/paypal/order', [PaymentController::class, 'paypalOrder'])->name('paypal.order');
+       Route::get('/paypal/success', [PaymentController::class, 'success'])->name('paypal.success');
+       Route::get('/paypal/cancel', [PaymentController::class, 'cancel'])->name('paypal.cancel');
+
+       Route::post('/stripe/', [PaymentController::class, 'stripeOrder'])->name('stripe.order');
+
+        Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+
 
 });
 
-Route::post('register', [AuthController::class, 'register'])->name('register');
-Route::post('login', [AuthController::class, 'login'])->name('login');
 
 
+
+
+// Admin Panel Routes
 
 Route::group(['prefix' => 'app'], function() {
     Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');

@@ -46,7 +46,7 @@
             <div class="tf-login-form">
                 <form class="">
                     <div>
-                        <p>Sign up for early Sale access plus tailored new arrivals, trends and promotions. To opt out, click unsubscribe in our emails</p>
+                        <p>We will sent you a reset link via email</p>
                     </div>
                     <div class="tf-field style-1">
                         <input class="tf-field-input tf-input" placeholder=" " type="email"  name="">
@@ -88,8 +88,8 @@
                         <label class="tf-field-label" for="email">Email *</label>
                     </div>
                     <div class="tf-field style-1">
-                        <input class="tf-field-input tf-input" id="phone" placeholder="" type="phone"  name="phone">
-                        <label class="tf-field-label" for="phone">Email</label>
+                        <input class="tf-field-input tf-input" id="phone" placeholder="" type="tel"  name="phone">
+                        <label class="tf-field-label" for="phone">Phone</label>
                     </div>
                     <div class="tf-field style-1">
                         <input class="tf-field-input tf-input" id="password" placeholder="" type="password"  name="password" required>

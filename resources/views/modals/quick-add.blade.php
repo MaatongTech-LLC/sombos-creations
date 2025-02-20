@@ -8,19 +8,19 @@
             <div class="wrap">
                 <div class="tf-product-info-item">
                     <div class="image">
-                        <img src="images/products/orange-1.jpg" alt="">
+                        <img src="" id="productImage" alt="">
                     </div>
                     <div class="content">
-                        <a href="product-detail.html">Ribbed Tank Top</a>
+                        <a href="" id="productName"></a>
                         <div class="tf-product-info-price">
                             <!-- <div class="price-on-sale">$8.00</div>
                                 <div class="compare-at-price">$10.00</div>
                                 <div class="badges-on-sale"><span>20</span>% OFF</div> -->
-                            <div class="price">$18.00</div>
+                            <div class="price" id="productPrice"></div>
                         </div>
                     </div>
                 </div>
-                <div class="tf-product-info-variant-picker mb_15">
+               {{-- <div class="tf-product-info-variant-picker mb_15">
                     <div class="variant-picker-item">
                         <div class="variant-picker-label">
                             Color: <span class="fw-6 variant-picker-label-value">Orange</span>
@@ -66,29 +66,25 @@
                             </label>
                         </div>
                     </div>
-                </div>
+                </div>--}}
                 <div class="tf-product-info-quantity mb_15">
                     <div class="quantity-title fw-6">Quantity</div>
                     <div class="wg-quantity">
                         <span class="btn-quantity minus-btn">-</span>
-                        <input type="text" name="number" value="1">
+                        <input type="text" name="quantity" id="productQuantity" value="1">
                         <span class="btn-quantity plus-btn">+</span>
                     </div>
                 </div>
                 <div class="tf-product-info-buy-button">
+                    <input type="hidden" name="product_id" value="">
                     <form class="">
-                        <a href="javascript:void(0);" class="tf-btn btn-fill justify-content-center fw-6 fs-16 flex-grow-1 animate-hover-btn btn-add-to-cart"><span>Add to cart -&nbsp;</span><span class="tf-qty-price">$18.00</span></a>
+                        <a href="javascript:void(0);" class="tf-btn btn-fill justify-content-center fw-6 fs-16 flex-grow-1 animate-hover-btn add-to-cart-btn"><span>Add to cart -&nbsp;</span><span class="tf-qty-price"></span></a>
                         <div class="tf-product-btn-wishlist btn-icon-action">
                             <i class="icon-heart"></i>
                             <i class="icon-delete"></i>
                         </div>
-                        <a href="#compare" data-bs-toggle="offcanvas" aria-controls="offcanvasLeft" class="tf-product-btn-wishlist box-icon bg_white compare btn-icon-action">
-                            <span class="icon icon-compare"></span>
-                            <span class="icon icon-check"></span>
-                        </a>
                         <div class="w-100">
-                            <a href="#" class="btns-full">Buy with <img src="images/payments/paypal.png" alt=""></a>
-                            <a href="#" class="payment-more-option">More payment options</a>
+                            <button type="submit" class="btns-full outline-none border-0">Buy with <img src="{{ asset('images/payments/paypal.png') }}" alt=""></button>
                         </div>
                     </form>
                 </div>

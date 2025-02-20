@@ -44,12 +44,12 @@
                     @foreach($order->items as $item)
                         <div class="order-head">
                             <figure class="img-product">
-                                <img src="{{ $item->product->image }}" alt="product">
+                                <img src="{{ $item->product->getImage() }}" alt="product">
                             </figure>
                             <div class="content">
                                 <div class="text-2 fw-6">{{ $item->product->name }}</div>
                                 <div class="mt_4"><span class="fw-6">Price :</span> {{ $item->product->getPrice() }}</div>
-                                <div class="mt_4"><span class="fw-6">Size :</span> XL</div>
+{{--                                <div class="mt_4"><span class="fw-6">Size :</span> XL</div>--}}
                             </div>
                         </div>
                     @endforeach
@@ -71,7 +71,7 @@
                        @endif
                         <li class="d-flex justify-content-between text-2 mt_8">
                             <span>Order Total</span>
-                           @if($coupon)
+                           @if(isset($coupon))
                                 <span class="fw-6">${{ $order->total_amount - $coupon->coupon->discount }}</span>
                            @else
                                 <span class="fw-6">${{ $order->total_amount }}</span>

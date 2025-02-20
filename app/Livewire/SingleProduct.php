@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Modals;
+namespace App\Livewire;
 
 use App\Models\Cart;
 use App\Models\Order;
@@ -12,30 +12,23 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
 
+class SingleProduct extends Component
 
-class QuickView extends Component
 {
     use LivewireAlert;
 
     public $product;
     public $quantity = 1;
-    public $price = 0;
     public $isProcessing = false;
+    protected  $listeners = [
+        'increment' => 'increment',
+        'decrement' => 'decrement',
+        'deleteItem' => 'deleteItem',
+    ];
 
-    protected $listeners = ['openQuickView' => 'loadProduct'];
-
-    public function mount()
+    public function render()
     {
-
-    }
-
-    public function loadProduct($productId)
-    {
-        $this->product = Product::find($productId);
-        // Optionally, reset quantity or other properties
-        $this->quantity = 1;
-
-        $this->price = number_format(floatval($this->product->price), 2);
+        return view('livewire.single-product');
     }
 
     public function addToCart()
@@ -83,7 +76,7 @@ class QuickView extends Component
         $this->alert('success', 'Product added to wishlist');
     }
 
-    public function increment(): void
+    public function increment()
     {
         if ($this->quantity === $this->product->stock) {
             $this->quantity = $this->product->stock;
@@ -97,17 +90,16 @@ class QuickView extends Component
 
     }
 
-    public function decrement(): void
+    public function decrement()
     {
         if ($this->quantity > 1) {
             $this->quantity--;
 
             $this->updateQuantity();
         }
-
     }
 
-    public function updateQuantity(): void
+    public function updateQuantity()
     {
         if (Auth::check()) {
             Cart::where('user_id', Auth::id())
@@ -127,8 +119,7 @@ class QuickView extends Component
 
         }
 
-        $this->price = number_format(floatval($this->product->price * $this->quantity), 2);
-
+        $this->dispatch('cart:updated');
     }
 
     public function buyNow()
@@ -195,8 +186,5 @@ class QuickView extends Component
 
         $this->isProcessing = true;
     }
-    public function render()
-    {
-        return view('livewire.modals.quick-view');
-    }
+
 }

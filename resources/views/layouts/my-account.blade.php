@@ -31,14 +31,6 @@
                                 @endif
                             </li>
                             <li>
-                                @if(request()->routeIs('my-account.address'))
-                                    <span class="my-account-nav-item active">Address</span>
-                                @else
-                                    <a href="{{ route('my-account.address') }}" class="my-account-nav-item">Address</a>
-
-                                @endif
-                            </li>
-                            <li>
                                 @if(request()->routeIs('my-account.account-details'))
                                     <span class="my-account-nav-item active">Account Details</span>
                                 @else

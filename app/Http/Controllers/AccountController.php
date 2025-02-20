@@ -6,6 +6,7 @@ use App\Models\Order;
 use App\Models\Wishlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AccountController extends Controller
 {
@@ -31,6 +32,27 @@ class AccountController extends Controller
     public function accountDetails()
     {
         return view('my-account.account-details');
+    }
+
+    public function accountDetailsUpdate(Request $request)
+    {
+        $data = $request->validate([
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+            'current_password' => 'nullable|required_with:new_password',
+            'new_password' => 'nullable|min:8|confirmed',
+        ]);
+        $user = Auth::user();
+
+        $data['password'] = Hash::make($data['current_password']);
+
+        $user->update($data);
+
+        flash('Account details updated successfully');
+        return redirect()->back();
     }
 
     public function address()

@@ -6023,7 +6023,7 @@ header.header-bg {
   text-align: center;
 }
 .modalDemo .modal-dialog {
-  max-width: 1540px;
+  max-width: 860px;
   margin-top: 8px;
   margin-bottom: 8px;
   height: calc(100vh - 16px);

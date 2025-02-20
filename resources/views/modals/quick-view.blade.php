@@ -36,13 +36,14 @@
                             <div class="quantity-title fw-6">Quantity</div>
                             <div class="wg-quantity">
                                 <span class="btn-quantity minus-btn">-</span>
-                                <input type="text" name="number" value="1">
+                                <input type="text" name="quantity" value="1">
                                 <span class="btn-quantity plus-btn">+</span>
                             </div>
                         </div>
                         <div class="tf-product-info-buy-button">
                             <form class="">
-                                <a href="javascript:void(0);" class="tf-btn btn-fill justify-content-center fw-6 fs-16 flex-grow-1 animate-hover-btn btn-add-to-cart"><span>Add to cart -&nbsp;</span><span class="tf-qty-price">$8.00</span></a>
+                                <input type="hidden" name="product_id" value="">
+                                <a href="javascript:void(0);" class="tf-btn btn-fill justify-content-center fw-6 fs-16 flex-grow-1 animate-hover-btn add-to-cart-btn"><span>Add to cart -&nbsp;</span><span class="tf-qty-price">$8.00</span></a>
                                 @auth
                                     <a href="javascript:void(0);" class="tf-product-btn-wishlist hover-tooltip box-icon bg_white wishlist btn-icon-action">
                                         <span class="icon icon-heart"></span>
