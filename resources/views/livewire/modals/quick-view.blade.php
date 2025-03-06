@@ -6,7 +6,7 @@
                 <span class="icon-close icon-close-popup" data-bs-dismiss="modal"></span>
             </div>
             @if($product)
-                <div class="wrap d-flex align-items-center justify-content-between">
+                <div class="wrap d-flex flex-sm-column flex-md-row align-items-center justify-content-between overflow-y-auto">
                     <div class="tf-product-media-wrap">
                         <div class="item">
                             <img style="min-height: 300px; max-height: 600px;!important; object-fit: cover;" id="productImage" src="{{ $product->getImage() }}" alt="">

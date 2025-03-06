@@ -32,7 +32,7 @@
             </div>
         </div>
         <div class="mb-bottom">
-            <a href="#login" class="site-nav-icon"><i class="icon icon-account"></i>Login</a>
+            <a href="{{ auth()->user() === null ? '#login' : route('my-account') }}" @guest  data-bs-toggle="modal" @endguest class="site-nav-icon"><i class="icon icon-account"></i>@guest Login @endguest @auth {{ auth()->user()->firstname }} @endauth</a>
             <div class="bottom-bar-language">
                 <div class="tf-currencies">
                     <select class="image-select center style-default type-currencies">

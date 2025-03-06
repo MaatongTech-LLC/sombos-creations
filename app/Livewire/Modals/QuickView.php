@@ -63,7 +63,7 @@ class QuickView extends Component
 
         $this->dispatch('cart:updated');
 
-        $this->alert('success', 'Product added to cart successfully!');
+        $this->alert('success', 'Product added to cart!');
     }
 
     public function addToWishlist()

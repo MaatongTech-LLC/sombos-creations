@@ -232,7 +232,7 @@ html {
 }
 
 body {
-  font-family: "Albert Sans", sans-serif;
+  font-family: "Playfair Display SC", sans-serif;
   font-size: 14px;
   line-height: 22px;
   font-weight: 400;
@@ -308,7 +308,7 @@ input[type=url],
 input[type=search],
 input[type=tel],
 input[type=color] {
-  font-family: "Albert Sans", sans-serif;
+  font-family: "Playfair Display SC", sans-serif;
   border: 1px solid var(--line);
   outline: 0;
   -webkit-box-shadow: none;
@@ -412,7 +412,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Albert Sans", sans-serif;
+  font-family: "Playfair Display SC", sans-serif;
   text-rendering: optimizeLegibility;
   color: var(--main);
   font-weight: 400;
@@ -15431,7 +15431,7 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
 /* sib-form */
 .sib-form {
   padding: 0;
-  font-family: "Albert Sans", sans-serif !important;
+  font-family: "Playfair Display SC", sans-serif !important;
 }
 
 #sib-container {

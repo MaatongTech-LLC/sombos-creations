@@ -17,18 +17,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide">
-                    <div class="wrap-slider">
-                        <img src="{{ asset('images/slider/fashion-slideshow-02.jpg') }}" alt="fashion-slideshow">
-                        <div class="box-content">
-                            <div class="container">
-                                <h1 class="fade-item fade-item-1">Timeless African Elegance <br class="md-hidden"></h1>
-                                <p class="fade-item fade-item-2">Wear Your Roots!</p>
-                                <a href="{{ route('shop') }}" class="fade-item fade-item-3 tf-btn btn-fill animate-hover-btn btn-xl radius-3"><span>Shop collection</span><i class="icon icon-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
                 <div class="swiper-slide">
                     <div class="wrap-slider">
                         <img src="{{ asset('images/slider/fashion-slideshow-03.jpg') }}" alt="fashion-slideshow">
@@ -42,45 +31,10 @@
                     </div>
                 </div>
 
-                <div class="swiper-slide">
-                    <div class="wrap-slider">
-                        <img src="{{ asset('images/slider/fashion-slideshow-05.jpg') }}" alt="fashion-slideshow">
-                        <div class="box-content">
-                            <div class="container">
-                                <h1 class="fade-item fade-item-1">Glamorous<br>Glam</h1>
-                                <p class="fade-item fade-item-2">From casual to formal, we've got you covered</p>
-                                <a href="{{ route('shop') }}" class="fade-item fade-item-3 tf-btn btn-fill animate-hover-btn btn-xl radius-3"><span>Shop collection</span><i class="icon icon-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="wrap-slider">
-                        <img src="{{ asset('images/slider/fashion-slideshow-06.jpg') }}" alt="fashion-slideshow">
-                        <div class="box-content">
-                            <div class="container">
-                                <h1 class="fade-item fade-item-1">Glamorous<br>Glam</h1>
-                                <p class="fade-item fade-item-2">From casual to formal, we've got you covered</p>
-                                <a href="{{ route('shop') }}" class="fade-item fade-item-3 tf-btn btn-fill animate-hover-btn btn-xl radius-3"><span>Shop collection</span><i class="icon icon-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="wrap-slider">
-                        <img src="{{ asset('images/slider/fashion-slideshow-07.jpg') }}" alt="fashion-slideshow">
-                        <div class="box-content">
-                            <div class="container">
-                                <h1 class="fade-item fade-item-1">Glamorous<br>Glam</h1>
-                                <p class="fade-item fade-item-2">From casual to formal, we've got you covered</p>
-                                <a href="{{ route('shop') }}" class="fade-item fade-item-3 tf-btn btn-fill animate-hover-btn btn-xl radius-3"><span>Shop collection</span><i class="icon icon-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            
                 <div class="swiper-slide ">
                     <div class="wrap-slider">
-                        <img src="{{ asset('images/slider/fashion-slideshow-08.jpg') }}" alt="fashion-slideshow">
+                        <img src="{{ asset('images/slider/fashion-slideshow-09.jpg') }}" alt="fashion-slideshow">
                         <div class="box-content">
                             <div class="container">
                                 <h1 class="fade-item fade-item-1">Glamorous<br>Glam</h1>
@@ -102,7 +56,7 @@
                 <a href="{{ route('collections') }}" class="tf-btn btn-line">View all collections<i class="icon icon-arrow1-top-left"></i></a>
             </div>
             <div class="hover-sw-nav hover-sw-2">
-                <div dir="ltr" class="swiper tf-sw-collection" data-preview="4" data-tablet="3" data-mobile="2" data-space-lg="50" data-space-md="30" data-space="15" data-loop="false" data-auto-play="true">
+                <div dir="ltr" class="swiper tf-sw-collection" data-preview="4" data-tablet="3" data-mobile="2" data-space-lg="50" data-space-md="30" data-space="15" data-loop="false" data-auto-play="false">
                     <div class="swiper-wrapper">
                         @if(isset($collections))
                             @foreach($collections as $collection)
@@ -134,7 +88,7 @@
 
             <div class="row">
                 <div class="col-xl-9 col-lg-8 col-md-8">
-                    <div dir="ltr" class="swiper tf-sw-collection swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden" data-preview="3" data-tablet="2" data-mobile="2" data-space-lg="30" data-space-md="30" data-space="15" data-loop="true" data-auto-play="true">
+                    <div dir="ltr" class="swiper tf-sw-collection swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden" data-preview="3" data-tablet="2" data-mobile="2" data-space-lg="30" data-space-md="30" data-space="15" data-loop="true" data-auto-play="false">
                         <div class="swiper-wrapper" id="swiper-wrapper-6faeb1e710eb7e86" aria-live="polite" style="transform: translate3d(0px, 0px, 0px);">
                             @foreach($categories as $category)
                                 <div class="swiper-slide " lazy="true" style="width: 433.333px; margin-right: 30px;" role="group" aria-label="1 / 5">
