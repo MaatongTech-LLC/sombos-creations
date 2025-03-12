@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\ProductImage;
 use Illuminate\Http\Request;
 use App\Models\Collection;
 use App\Models\Product;
@@ -39,11 +40,22 @@ class HomeController extends Controller
 
     public function products($slug)
     {
-        $product = Product::where('slug', $slug)->first();
+        $product = Product::where('slug', $slug)->firstOrFail();
+
+        $previousProduct = Product::where('id', '<', $product->id)->orderBy('id', 'desc')->first();
+        $nextProduct = Product::where('id', '>', $product->id)->orderBy('id', 'asc')->first();
 
         $otherProducts = Product::where('slug', '!=', $slug)->get();
 
-        return view('products', ['product' => $product, 'otherProducts' => $otherProducts]);
+        $images = ProductImage::where('product_id', $product->id)->get();
+
+        return view('products', [
+            'product' => $product,
+            'otherProducts' => $otherProducts,
+            'previousProduct' => $previousProduct,
+            'nextProduct' => $nextProduct,
+            'images' => $images,
+        ]);
     }
 
     public function productAjax($id)

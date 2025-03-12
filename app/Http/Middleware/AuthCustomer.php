@@ -17,7 +17,7 @@ class AuthCustomer
     public function handle(Request $request, Closure $next): Response
     {
         if (! Auth::check()) {
-            flash('You should login to access this page.');
+            toast('You should login to access this page.');
            return redirect()->route('home');
         }
         return $next($request);

@@ -38,9 +38,9 @@
                         @enderror
                     </fieldset>
                     <fieldset>
-                        <div class="body-title">Upload images <span class="tf-color-1">*</span></div>
+                        <div class="body-title mb-10">Category Image <span class="tf-color-1">*</span></div>
                         <div class="upload-image flex-grow">
-                            <div class="item up-load">
+                            <div class="up-load">
                                 <label class="uploadfile h250" for="myFile">
                                                         <span class="icon">
                                                             <i class="icon-upload-cloud"></i>
@@ -55,13 +55,7 @@
                         <div class="text-tiny text-danger">{{ $message }}</div>
                         @enderror
                     </fieldset>
-                    <fieldset class="name">
-                        <div class="body-title">Category Description <span class="tf-color-1">*</span></div>
-                        <textarea class="mb-10" name="description" placeholder="Short description Category" tabindex="0" aria-required="true" required=""></textarea>
-                        @error('description')
-                            <div class="text-tiny text-danger">{{ $message }}</div>
-                        @enderror
-                    </fieldset>
+
 
                     <div class="bot">
                         <div></div>

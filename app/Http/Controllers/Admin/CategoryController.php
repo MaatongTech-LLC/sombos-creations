@@ -36,7 +36,6 @@ class CategoryController extends Controller
 
         $data = $request->validate([
             'name' => 'required',
-            'description' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:4096',
         ]);
 
@@ -49,7 +48,7 @@ class CategoryController extends Controller
 
         Category::create($data);
 
-        flash('Category created successfully!', 'success');
+        toast('Category created successfully!', 'success');
 
         return redirect()->route('admin.categories.index');
     }
@@ -79,7 +78,6 @@ class CategoryController extends Controller
     {
         $data = $request->validate([
             'name' => 'required',
-            'description' => 'required',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:4096',
         ]);
 
@@ -92,7 +90,7 @@ class CategoryController extends Controller
 
         Category::where('id', $id)->update($data);
 
-        flash('Category updated successfully!', 'success');
+        toast('Category updated successfully!', 'success');
 
         return redirect()->route('admin.categories.index');
     }
@@ -105,7 +103,7 @@ class CategoryController extends Controller
         $category = Category::findOrFail($id);
         $category->delete();
 
-        flash('Category deleted successfully!', 'success');
+        toast('Category deleted successfully!', 'success');
 
         return redirect()->route('admin.categories.index');
     }

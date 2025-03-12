@@ -51,7 +51,7 @@ class AccountController extends Controller
 
         $user->update($data);
 
-        flash('Account details updated successfully');
+        toast('Account details updated successfully');
         return redirect()->back();
     }
 

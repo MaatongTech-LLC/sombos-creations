@@ -36,7 +36,7 @@
             <div class="bottom-bar-language">
                 <div class="tf-currencies">
                     <select class="image-select center style-default type-currencies">
-                        <option selected data-thumbnail="images/country/us.svg">USD <span>$ | United States</span></option>
+                        <option selected data-thumbnail="{{ asset('images/country/us.svg') }}">USD <span>$ | United States</span></option>
                     </select>
                 </div>
                 <div class="tf-languages">

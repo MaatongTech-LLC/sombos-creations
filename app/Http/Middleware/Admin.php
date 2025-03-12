@@ -19,7 +19,7 @@ class Admin
         if (Auth::check() && Auth::user()->role === 'admin') {
             return $next($request);
         }
-        flash('You do not have permission to access this page.', 'error');
+        toast('You do not have permission to access this page.', 'error');
         return redirect()->route('home');
     }
 }

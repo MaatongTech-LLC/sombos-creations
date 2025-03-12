@@ -33,14 +33,6 @@ Route::get('collections', [ShopController::class, 'collections'])->name('collect
 Route::get('/products/{slug}', [HomeController::class, 'products'])->name('products');
 Route::get('/product/{id}', [HomeController::class, 'productAjax'])->name('products.ajax');
 
-/*Route::get('/cart', [CartController::class, 'index'])->name('cart');
-Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
-Route::post('/cart/update', [CartController::class, 'update'])->name('cart.update');
-Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
-Route::post('/cart/empty', [CartController::class, 'empty'])->name('cart.empty');*/
-
-
-
 // Terms and conditions
 Route::get('terms-conditions', function() {return view('terms-conditions');})->name('terms-conditions');
 // Privacy Policy
@@ -71,14 +63,7 @@ Route::middleware('auth-customer')->group(function() {
        Route::post('/stripe/', [PaymentController::class, 'stripeOrder'])->name('stripe.order');
 
         Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
-
-
 });
-
-
-
-
 
 // Admin Panel Routes
 

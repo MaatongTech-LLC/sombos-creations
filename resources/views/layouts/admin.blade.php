@@ -31,7 +31,37 @@
     <link rel="shortcut icon" href="{{ asset('images/logo/favicon.png')}}">
     <link rel="apple-touch-icon-precomposed" href="{{ asset('images/logo/favicon.png')}}">
 
-    @include('sweetalert::alert')
+
+    <style>
+        input[type="file"] {
+            cursor: pointer;
+        }
+
+        .gallery-wrap .item {
+            position: relative;
+        }
+
+        .gallery-wrap .delete-button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            padding: 8px 8px !important;
+        }
+
+
+    </style>
+
 
 </head>
 
@@ -81,7 +111,7 @@
 <script src="{{ asset('admin/js/zoom.js')}}"></script>
 <script src="{{ asset('admin/js/morris.min.js')}}"></script>
 <script src="{{ asset('admin/js/raphael.min.js')}}"></script>
-<script src="{{ asset('admin/js/morris.js')}}"></script>
+{{--<script src="{{ asset('admin/js/morris.js')}}"></script>--}}
 <script src="{{ asset('admin/js/jvectormap.min.js')}}"></script>
 <script src="{{ asset('admin/js/jvectormap-us-lcc.js')}}"></script>
 <script src="{{ asset('admin/js/jvectormap-data.js')}}"></script>
@@ -97,6 +127,7 @@
 <script src="{{ asset('admin/js/theme-settings.js') }}"></script>
 
 <script src="{{ asset('admin/js/main.js') }}"></script>
-
+@include('sweetalert::alert')
+@stack('scripts')
 </body>
 </html>

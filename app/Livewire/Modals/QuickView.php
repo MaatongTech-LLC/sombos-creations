@@ -48,7 +48,7 @@ class QuickView extends Component
         } else {
             $cart = Session::get('cart', []);
             if (isset($cart[$this->product->id])) {
-                $this->alert('warning', 'Product already exists in the cart!');
+                $this->alert('warning', 'Product already in the cart!');
                 return;
             } else {
                 $cart[$this->product->id] = [

@@ -108,16 +108,16 @@
     }
   }
 
-  var icon_function = function () {
+ var icon_function = function () {
     if ($('div').hasClass("list-icon-function")) {
       $(".list-icon-function .trash").on("click", function (e) {
-        $(this).parents(".item-row").remove();
+        //$(this).parents(".item-row").remove();
       })
     }
   }
 
   var box_search=function(){
-        
+
     $(document).on('click',function(e){
       var clickID=e.target.id;if((clickID!=='s')){
           $('.box-content-search').removeClass('active');
@@ -126,7 +126,7 @@
         var clickID=e.target.class;if((clickID!=='a111')){
             $('.show-search').removeClass('active');
     }});
-        
+
     $('.show-search').on('click',function(event){
       event.stopPropagation();}
     );
@@ -141,7 +141,7 @@
         $('.box-content-search').removeClass('active');
       }
     });
-   
+
   }
 
   var preloader = function () {
@@ -211,6 +211,54 @@
       }
   };
 
+  var uploadMultipleFile = function() {
+    document.querySelector('#galleryImages').addEventListener("change", function(event) {
+        var files = event.target.files;
+        var galleryWrap = document.querySelector('.gallery-wrap');
+
+        console.log(files);
+
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+
+            if (file.type.startsWith('image/')) {
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    const imageContainer = document.createElement('div');
+                    imageContainer.className = 'item';
+
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+
+                    const deleteButton = document.createElement('button');
+                    deleteButton.className = 'delete-button';
+                    deleteButton.textContent = '×';
+                    deleteButton.onclick = function() {
+                        // Supprimez l'image de l'aperçu
+                        galleryWrap.removeChild(imageContainer);
+
+                        // Mettez à jour l'input file pour refléter la suppression
+                        const newFiles = Array.from(event.target.files).filter((_, index) => index !== i);
+                        const dataTransfer = new DataTransfer();
+                        newFiles.forEach(f => dataTransfer.items.add(f));
+                        event.target.files = dataTransfer.files;
+                    };
+
+                    imageContainer.appendChild(img);
+                    imageContainer.appendChild(deleteButton);
+                    galleryWrap.appendChild(imageContainer);
+                };
+
+                reader.readAsDataURL(file);
+            }
+        }
+    });
+
+
+  };
+
+
   // Dom Ready
   $(function () {
     selectImages();
@@ -226,7 +274,7 @@
     flatAccordion(".flat-accordion1");
     uploadfile();
     preloader();
-    
+    uploadMultipleFile();
   });
 
 })(jQuery);

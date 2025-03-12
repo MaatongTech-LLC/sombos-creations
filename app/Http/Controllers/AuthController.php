@@ -33,7 +33,7 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        flash('Registration Successful!');
+        toast('Registration Successful!');
 
 
         return redirect()->route('home');
@@ -49,7 +49,8 @@ class AuthController extends Controller
 
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
 
-            flash('Login Successful!');
+            toast('Login Successful!');
+
             if (Auth::user()->role === 'admin') {
                 return redirect()->route('admin.dashboard');
             }
@@ -58,7 +59,8 @@ class AuthController extends Controller
 
         }
 
-        flash('Invalid Credentials!', 'error');
+        toast('Invalid Credentials!', 'error');
+
         return back();
     }
 
@@ -69,7 +71,7 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        flash('Logout Successful!');
+        toast('Logout Successful!');
 
         return redirect()->route('home');
     }

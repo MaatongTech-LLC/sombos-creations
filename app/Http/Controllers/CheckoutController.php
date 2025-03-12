@@ -71,7 +71,7 @@ class CheckoutController extends Controller
             } catch (\Exception $e) {
                 DB::rollBack();
 
-                flash('Something went wrong', 'error');
+                toast('Something went wrong', 'error');
 
                 return redirect()->back();
             }

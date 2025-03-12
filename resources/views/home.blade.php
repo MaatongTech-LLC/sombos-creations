@@ -17,13 +17,13 @@
                         </div>
                     </div>
                 </div>
-                
-                <div class="swiper-slide">
+
+                <div class="swiper-slide ">
                     <div class="wrap-slider">
-                        <img src="{{ asset('images/slider/fashion-slideshow-03.jpg') }}" alt="fashion-slideshow">
+                        <img src="{{ asset('images/slider/fashion-slideshow-09.jpg') }}" alt="fashion-slideshow">
                         <div class="box-content">
                             <div class="container">
-                                <h1 class="fade-item fade-item-1">Bold, Beautiful, African</h1>
+                                <h1 class="fade-item fade-item-1">Glamorous<br>Glam</h1>
                                 <p class="fade-item fade-item-2">From casual to formal, we've got you covered</p>
                                 <a href="{{ route('shop') }}" class="fade-item fade-item-3 tf-btn btn-fill animate-hover-btn btn-xl radius-3"><span>Shop collection</span><i class="icon icon-arrow-right"></i></a>
                             </div>
@@ -31,13 +31,12 @@
                     </div>
                 </div>
 
-            
-                <div class="swiper-slide ">
+                <div class="swiper-slide">
                     <div class="wrap-slider">
-                        <img src="{{ asset('images/slider/fashion-slideshow-09.jpg') }}" alt="fashion-slideshow">
+                        <img src="{{ asset('images/slider/fashion-slideshow-03.jpg') }}" alt="fashion-slideshow">
                         <div class="box-content">
                             <div class="container">
-                                <h1 class="fade-item fade-item-1">Glamorous<br>Glam</h1>
+                                <h1 class="fade-item fade-item-1">Bold, Beautiful, African</h1>
                                 <p class="fade-item fade-item-2">From casual to formal, we've got you covered</p>
                                 <a href="{{ route('shop') }}" class="fade-item fade-item-3 tf-btn btn-fill animate-hover-btn btn-xl radius-3"><span>Shop collection</span><i class="icon icon-arrow-right"></i></a>
                             </div>
@@ -85,9 +84,14 @@
 
     <section class="flat-spacing-4 flat-categorie">
         <div class="container-full">
-
+            <div class="container">
+                <div class="flat-title flex-row justify-content-between align-items-center px-0 wow fadeInUp" data-wow-delay="0s">
+                    <h3 class="title">Discovery all new items</h3>
+                    <a href="{{ route('shop') }}" class="tf-btn btn-line">See more<i class="icon icon-arrow1-top-left"></i></a>
+                </div>
+            </div>
             <div class="row">
-                <div class="col-xl-9 col-lg-8 col-md-8">
+                <div class="col-xl-12 col-lg-12 col-md-12">
                     <div dir="ltr" class="swiper tf-sw-collection swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden" data-preview="3" data-tablet="2" data-mobile="2" data-space-lg="30" data-space-md="30" data-space="15" data-loop="true" data-auto-play="false">
                         <div class="swiper-wrapper" id="swiper-wrapper-6faeb1e710eb7e86" aria-live="polite" style="transform: translate3d(0px, 0px, 0px);">
                             @foreach($categories as $category)
@@ -107,14 +111,7 @@
                         </div>
                         <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
                 </div>
-                <div class="col-xl-3 col-lg-4 col-md-4">
-                    <div class="discovery-new-item">
-                        <h5>Discovery all new items</h5>
-                        <a href="{{ route('shop') }}"><i class="icon-arrow1-top-left"></i></a>
-                    </div>
-                </div>
             </div>
-
         </div>
     </section>
 

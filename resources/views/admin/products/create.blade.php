@@ -15,7 +15,7 @@
                         <i class="icon-chevron-right"></i>
                     </li>
                     <li>
-                        <a href="#"><div class="text-tiny">Product</div></a>
+                        <a href="{{ route('admin.products.index') }}"><div class="text-tiny">Product</div></a>
                     </li>
                     <li>
                         <i class="icon-chevron-right"></i>
@@ -28,32 +28,31 @@
             <!-- form-add-product -->
             <form class="form-add-product" action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <div class="wg-box mb-30">
-                    <fieldset>
-                        <div class="body-title mb-10">Upload images</div>
-                        <div class="upload-image mb-16">
-                            <div class="up-load">
-                                <label class="uploadfile" for="myFile">
-                                                        <span class="icon">
-                                                            <i class="icon-upload-cloud"></i>
-                                                        </span>
-                                    <div class="text-tiny">Drop your images here or select <span class="text-secondary">click to browse</span></div>
-                                    <input type="file" id="myFile" name="image">
-                                    <img src="" id="myFile-input" alt="">
-                                </label>
-                            </div>
-                        </div>
-                        @error('image')
-                            <div class="text-tiny text-danger">{{ $message }}</div>
-                        @enderror
-                    </fieldset>
-                </div>
+
                 <div class="wg-box mb-30">
                     <fieldset class="name">
                         <div class="body-title mb-10">Product Name <span class="tf-color-1">*</span></div>
                         <input class="mb-10" type="text" placeholder="Enter title" name="name" tabindex="0" value="" aria-required="true" required="">
                         @error('name')
                             <div class="text-tiny text-danger">{{ $message }}</div>
+                        @enderror
+                    </fieldset>
+                    <fieldset>
+                        <div class="body-title mb-10">Product Image <span class="tf-color-1">*</span></div>
+                        <div class="upload-image flex-grow">
+                            <div class="up-load">
+                                <label class="uploadfile h250" for="myFile">
+                                                        <span class="icon">
+                                                            <i class="icon-upload-cloud"></i>
+                                                        </span>
+                                    <span class="body-text">Drop your images here or select <span class="tf-color">click to browse</span></span>
+                                    <img id="myFile-input" src="" alt="">
+                                    <input type="file" id="myFile" name="image">
+                                </label>
+                            </div>
+                        </div>
+                        @error('image')
+                        <div class="text-tiny text-danger">{{ $message }}</div>
                         @enderror
                     </fieldset>
                     <fieldset class="category">
@@ -68,16 +67,16 @@
                             <div class="text-tiny text-danger">{{ $message }}</div>
                         @enderror
                     </fieldset>
-                    <div class="cols-lg gap2">
+                    <div class="gap-2 d-flex align-items-center">
                         <fieldset class="price">
                             <div class="body-title mb-10">Price <span class="tf-color-1">*</span></div>
-                            <input class="" type="number" placeholder="Price" name="price" tabindex="0" value="" aria-required="true" required="">
+                            <input class="" type="number" placeholder="Price" name="price" tabindex="0" min="1" value="" aria-required="true" required="">
                         </fieldset>
                         @error('price')
                             <div class="text-tiny text-danger">{{ $message }}</div>
                         @enderror
                         <fieldset class="stock">
-                            <div class="body-title mb10">Stock <span class="tf-color-1">*</span></div>
+                            <div class="body-title mb-10">Stock <span class="tf-color-1">*</span></div>
                             <input class="" type="number" placeholder="Enter Stock" name="stock" tabindex="0" value="" aria-required="true" required="">
                             @error('stock')
                                 <div class="text-tiny text-danger">{{ $message }}</div>
@@ -93,6 +92,27 @@
                         @enderror
                     </fieldset>
                 </div>
+                <div class="wg-box mb-30">
+                    <fieldset>
+                        <div class="body-title mb-10">Images Gallery</div>
+                        <div class="upload-image flex-grow">
+                            <div class="up-load">
+                                <label class="uploadfile" for="galleryImages">
+                                                        <span class="icon">
+                                                            <i class="icon-upload-cloud"></i>
+                                                        </span>
+                                    <span class="body-text">Drop your images here or select <span class="tf-color">click to browse</span></span>
+                                    <img id="myFile-input" src="" alt="">
+                                    <input type="file" class="filepond" name="gallery_images[]" id="galleryImages" multiple accept="image/*">
+                                </label>
+                            </div>
+                            <div class="flex gap20 flex-wrap gallery-wrap"></div>
+                        </div>
+                        @error('gallery_images')
+                        <div class="text-tiny text-danger">{{ $message }}</div>
+                        @enderror
+                    </fieldset>
+                </div>
 
                 <div class="cols gap10">
                     <button class="tf-button w380" type="submit">Add product</button>
@@ -104,3 +124,30 @@
         <!-- /main-content-wrap -->
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+       /* const inputElement = document.querySelector('#galleryImages');
+
+        // Create a FilePond instance
+        const pond = FilePond.create(inputElement, {
+            allowImagePreview: true,
+            allowImageFilter: true,
+            imagePreviewHeight: 100,
+            allowMultiple: true,
+            allowFileTypeValidation: true,
+            allowRevert: true,
+            acceptedFileTypes: ["image/png", "image/jpeg", "image/jpg"],
+            maxFiles: 5,
+            credits: false,
+            server: {
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                url: '/products',
+                process: false,
+                fetch: false,
+            }
+        });*/
+    </script>
+@endpush

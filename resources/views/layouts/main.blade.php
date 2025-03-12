@@ -23,7 +23,7 @@
     <link rel="shortcut icon" href="{{ asset('images/logo/favicon.png') }}">
     <link rel="apple-touch-icon-precomposed" href="{{ asset('images/logo/favicon.png') }}">
 
-    <link rel="stylesheet" href="{{ asset('vendor/flasher/flasher.min.css') }}">
+
 
     <style>
         .swal2-toast {
@@ -34,6 +34,8 @@
         }
     </style>
     @stack('styles')
+
+
 
 </head>
 
@@ -97,21 +99,19 @@
 <script type="text/javascript" src="{{ asset('js/lazysize.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/bootstrap-select.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/count-down.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/drift.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/wow.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/nouislider.min.js') }}"></script>
 
 <script type="text/javascript" src="{{ asset('js/multiple-modal.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
-
-<script src="{{ asset('vendor/flasher/flasher.min.js') }}"></script>
-
-
-
-@livewireScripts
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+@include('sweetalert::alert')
 <x-livewire-alert::scripts />
-@stack('scripts')
+
+@livewireScripts
+
 
 <script>
     Livewire.on('cart:count', (count) => {
@@ -122,6 +122,8 @@
         $('#wishlistCount').text(count);
     });
 </script>
+@stack('scripts')
+
 </body>
 
 </html>

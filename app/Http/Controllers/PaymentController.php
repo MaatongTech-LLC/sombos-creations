@@ -90,11 +90,11 @@ class PaymentController extends Controller
                'order_id' => $request->order_id,
                'payment_method' => 'PayPal'
                ]);
-            flash('Payment Successful.',);
+            toast('Payment Successful.',);
 
             return redirect()->route('my-account.account-details', $request->order_id);
         } else {
-            flash('Something went wrong.', 'error');
+            toast('Something went wrong.', 'error');
 
         }
         return redirect()->route('home');
@@ -102,7 +102,7 @@ class PaymentController extends Controller
 
     public function cancel(Request $request)
     {
-        flash('Payment cancelled.', 'error');
+        toast('Payment cancelled.', 'error');
 
         return redirect()->route('home');
     }
@@ -158,7 +158,7 @@ class PaymentController extends Controller
             );
 
             // Payment was successful, process your order or store payment details here.
-            flash('Payment successful.', 'success');
+            toast('Payment successful.', 'success');
 
             return redirect()->route('my-account.orders.details', $order->id);
 

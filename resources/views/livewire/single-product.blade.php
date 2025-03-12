@@ -1,36 +1,85 @@
-<div class="tf-main-product section-image-zoom">
+@php
+    $images = \App\Models\ProductImage::where('product_id', $product->id)->get();
+@endphp
+<div class="tf-main-product">
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
+            {{--<div class="col-md-6">
                 <div class="tf-product-media-wrap sticky-top">
                     <div class="thumbs-slider">
                         <div dir="ltr" class="swiper tf-product-media-thumbs other-image-zoom swiper-initialized swiper-vertical swiper-pointer-events swiper-free-mode swiper-watch-progress swiper-thumbs" data-direction="vertical">
-                            <div class="swiper-wrapper stagger-wrap" id="swiper-wrapper-689eccc28ec398f3" aria-live="polite" style="transform: translate3d(0px, 0px, 0px);">
-                                <!-- beige -->
-                                <div class="swiper-slide stagger-item stagger-finished swiper-slide-visible swiper-slide-active swiper-slide-thumb-active" data-color="beige" role="group" aria-label="1 / 18" style="transition-delay: 0.2s; margin-bottom: 10px;">
+                            <div class="swiper-wrapper stagger-wrap" id="swiper-wrapper-d9f48536cfcaaa39" aria-live="polite" style="transform: translate3d(0px, 0px, 0px);">
+
+                                @php
+                                    $images = \App\Models\ProductImage::where('product_id', $product->id)->get();
+                                @endphp
+
+                                <div class="swiper-slide stagger-item swiper-slide-active swiper-slide-thumb-active stagger-finished swiper-slide-visible"  role="group" style="transition-delay: 1.2s; margin-bottom: 10px;">
                                     <div class="item">
-                                        <img class=" ls-is-cached lazyloaded" data-src="{{ \Illuminate\Support\Facades\Storage::url($product->image) }}" src="{{ \Illuminate\Support\Facades\Storage::url($product->image) }}" alt="img-product">
+                                        <img class=" ls-is-cached lazyloaded" data-src="{{ $product->getImage() }}" src="{{ $product->getImage() }}" alt="img-product">
                                     </div>
                                 </div>
+                                @foreach($images as $key => $image)
+                                    <div class="swiper-slide stagger-item stagger-finished swiper-slide-visible"  role="group" style="transition-delay: 1.2s; margin-bottom: 10px;">
+                                        <div class="item">
+                                            <img class=" ls-is-cached lazyloaded" data-src="{{ $image->getImage() }}" src="{{ $image->getImage() }}" alt="img-product">
+                                        </div>
+                                    </div>
+                                @endforeach
 
                             </div>
-                            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+                            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                        </div>
                         <div dir="ltr" class="swiper tf-product-media-main swiper-initialized swiper-horizontal swiper-pointer-events" id="gallery-swiper-started">
-                            <div class="swiper-wrapper" id="swiper-wrapper-a7dc8d1352967cc3" aria-live="polite" style="transform: translate3d(0px, 0px, 0px);">
-                                <!-- beige -->
-                                <div class="swiper-slide swiper-slide-active" data-color="beige" style="width: 597px;" role="group" aria-label="1 / 18">
-                                    <a href="{{ \Illuminate\Support\Facades\Storage::url($product->image) }}" target="_blank" class="item" data-pswp-width="770px" data-pswp-height="1075px">
-                                        <img class="tf-image-zoom ls-is-cached lazyloaded" data-zoom="{{ \Illuminate\Support\Facades\Storage::url($product->image) }}" data-src="{{ \Illuminate\Support\Facades\Storage::url($product->image) }}" src="{{ \Illuminate\Support\Facades\Storage::url($product->image) }}" alt="">
+                            <div class="swiper-wrapper"  style="transform: translate3d(0px, 0px, 0px);">
+
+
+                                <div class="swiper-slide swiper-slide-active" style="width: 597px;">
+                                    <a href="{{ $product->getImage() }}" target="_blank" class="item" data-pswp-width="770px" data-pswp-height="1075px">
+                                        <img class="tf-image-zoom ls-is-cached lazyloaded" data-zoom="{{ $product->getImage() }}" data-src="{{ $product->getImage() }}" src="{{ $product->getImage() }}" alt="">
                                     </a>
                                 </div>
+
+                                @foreach($images as $image)
+                                    <div class="swiper-slide" style="width: 597px;">
+                                        <a href="{{ $image->getImage() }}" target="_blank" class="item" data-pswp-width="770px" data-pswp-height="1075px">
+                                            <img class="tf-image-zoom ls-is-cached lazyloaded" data-zoom="{{ $image->getImage() }}" data-src="{{ $image->getImage() }}" src="{{ $image->getImage() }}" alt="">
+                                        </a>
+                                    </div>
+                                @endforeach
+                                <!-- beige -->
+
 
                             </div>
                             <div class="swiper-button-next button-style-arrow thumbs-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-a7dc8d1352967cc3" aria-disabled="false"></div>
                             <div class="swiper-button-prev button-style-arrow thumbs-prev swiper-button-disabled" tabindex="-1" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-a7dc8d1352967cc3" aria-disabled="true"></div>
-                            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+                            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                        </div>
                     </div>
                 </div>
+            </div>--}}
+
+            <div class="col-md-6">
+                <div class="tf-product-media-wrap wrapper-gallery-scroll">
+                    <div class="mb_10">
+                        <a href="{{ $product->getImage() }}" target="_blank" data-color="beige" class="item item-img-color" data-pswp-width="770px" data-pswp-height="1075px">
+                            <img class="tf-image-zoom ls-is-cached lazyloaded" data-zoom="{{ $product->getImage() }}" data-src="{{ $product->getImage() }}" src="{{ $product->getImage() }}" alt="">
+                        </a>
+                    </div>
+
+                    <div class="d-grid grid-template-columns-2 gap-10" id="gallery-started">
+                        @foreach($images as $image)
+                            <a href="{{ $image->getImage() }}" target="_blank" data-color="beige" class="item item-img-color" data-pswp-width="770px" data-pswp-height="1075px">
+                                <img class="radius-10 tf-image-zoom ls-is-cached lazyloaded" data-zoom="{{ $image->getImage() }}" data-src="{{ $image->getImage() }}" src="{{ $image->getImage() }}" alt="img-product">
+                            </a>
+                        @endforeach
+
+
+                    </div>
+
+                </div>
             </div>
+
             <div class="col-md-6">
                 <div class="tf-product-info-wrap position-relative">
                     <div class="tf-zoom-main"></div>

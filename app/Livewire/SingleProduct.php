@@ -41,7 +41,7 @@ class SingleProduct extends Component
         } else {
             $cart = Session::get('cart', []);
             if (isset($cart[$this->product->id])) {
-                $this->alert('warning', 'Product already exists in the cart!');
+                $this->alert('warning', 'Product already in the cart!');
                 return;
             } else {
                 $cart[$this->product->id] = [
@@ -56,7 +56,7 @@ class SingleProduct extends Component
 
         $this->dispatch('cart:updated');
 
-        $this->alert('success', 'Product added to cart successfully!');
+        $this->alert('success', 'Product added to cart!');
     }
 
     public function addToWishlist()
@@ -126,7 +126,7 @@ class SingleProduct extends Component
     {
 
         if (! Auth::check()) {
-            $this->alert('error', 'Please login to pay directly with Paypal');
+            $this->alert('error', 'Login to pay directly with Paypal');
             return;
         }
         // Calculate the total amount (for simplicity, product price * quantity)

@@ -54,7 +54,7 @@
                                 </form>
                             </div>
                             <div>
-                                <a href="{{ route('products', $product->id) }}" id="productLink" class="tf-btn fw-6 btn-line">View full details<i class="icon icon-arrow1-top-left"></i></a>
+                                <a href="{{ route('products', $product->slug) }}" id="productLink" class="tf-btn fw-6 btn-line">View full details<i class="icon icon-arrow1-top-left"></i></a>
                             </div>
                         </div>
                     </div>

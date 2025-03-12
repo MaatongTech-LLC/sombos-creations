@@ -5,19 +5,16 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductImage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::latest()->paginate(10);
 
-        $title = 'Delete!';
-        $text = "Are you sure you want to delete?";
-        confirmDelete($title, $text);
-
-        return view('admin.products.index', ['products' => $products]);
+        return view('admin.products.index');
     }
 
     public function create()
@@ -34,7 +31,7 @@ class ProductController extends Controller
             'price' => 'required|numeric',
             'stock' => 'required|integer',
             'category_id' => 'required|exists:categories,id',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:4096',
         ]);
 
         if ($request->hasFile('image')) {
@@ -43,9 +40,20 @@ class ProductController extends Controller
 
         $data['slug'] = str_replace([' ', '_'], '-', strtolower($request->name));
 
-        Product::create($data);
+        $product = Product::create($data);
 
-        flash('Product created successfully!', 'success');
+        if ($request->has('gallery_images')) {
+            foreach ($request->gallery_images as $gallery_image) {
+                $image_path = $gallery_image->store("products/product-$product->id/gallery_images", 'public');
+
+                ProductImage::create([
+                    'product_id' => $product->id,
+                    'image_url' => $image_path,
+                ]);
+            }
+        }
+
+        toast('Product created successfully!', 'success');
 
         return redirect()->route('admin.products.index');
     }
@@ -54,8 +62,10 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
 
+        $images = ProductImage::where('product_id', $id)->get();
+
         $categories = Category::all();
-        return view('admin.products.edit', ['product' => $product, 'categories' => $categories]);
+        return view('admin.products.edit', ['product' => $product, 'categories' => $categories, 'images' => $images]);
     }
 
     public function update(Request $request, $id)
@@ -77,7 +87,18 @@ class ProductController extends Controller
 
         Product::where('id', $id)->update($data);
 
-        flash('Product updated successfully!', 'success');
+        if ($request->has('gallery_images')) {
+            foreach ($request->gallery_images as $gallery_image) {
+                $image_path = $gallery_image->store("products/product-$id/gallery_images", 'public');
+
+                ProductImage::create([
+                    'product_id' => $id,
+                    'image_url' => $image_path,
+                ]);
+            }
+        }
+
+        toast('Product updated successfully!', 'success');
 
         return redirect()->route('admin.products.index');
     }
@@ -87,10 +108,18 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         $product->delete();
 
-        flash('Product deleted successfully!', 'success');
+        toast('Product deleted successfully!', 'success');
 
         return redirect()->route('admin.products.index');
     }
 
+    public function deleteImage($id)
+    {
+        $productImage = ProductImage::findOrFail($id)->delete();
+
+        Storage::delete($productImage->image_url);
+
+        toast('Product image deleted successfully!', 'success');
+    }
 
 }

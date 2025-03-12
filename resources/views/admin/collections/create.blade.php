@@ -15,7 +15,7 @@
                         <i class="icon-chevron-right"></i>
                     </li>
                     <li>
-                        <a href="#"><div class="text-tiny">Collection</div></a>
+                        <a href="{{ route('admin.collections.index') }}"><div class="text-tiny">Collection</div></a>
                     </li>
                     <li>
                         <i class="icon-chevron-right"></i>
@@ -38,9 +38,9 @@
                         @enderror
                     </fieldset>
                     <fieldset>
-                        <div class="body-title">Upload images <span class="tf-color-1">*</span></div>
+                        <div class="body-title mb-10">Category Image <span class="tf-color-1">*</span></div>
                         <div class="upload-image flex-grow">
-                            <div class="item up-load">
+                            <div class="up-load">
                                 <label class="uploadfile h250" for="myFile">
                                                         <span class="icon">
                                                             <i class="icon-upload-cloud"></i>
@@ -55,14 +55,18 @@
                         <div class="text-tiny text-danger">{{ $message }}</div>
                         @enderror
                     </fieldset>
-                    <fieldset class="name">
-                        <div class="body-title">Collection Description <span class="tf-color-1">*</span></div>
-                        <textarea class="mb-10" name="description" placeholder="Short description collection" tabindex="0" aria-required="true" required=""></textarea>
-                        @error('description')
-                            <div class="text-tiny text-danger">{{ $message }}</div>
+                    <fieldset>
+                        <div class="body-title mb-10">Collection's Products <span class="tf-color-1">*</span></div>
+                        <select name="products[]" id="products" multiple required>
+                            <option label="Select a products" disabled></option>
+                            @foreach($products as $product)
+                                <option value="{{ $product->id }}">{{ $product->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('products')
+                        <div class="text-tiny text-danger">{{ $message }}</div>
                         @enderror
                     </fieldset>
-
                     <div class="bot">
                         <div></div>
                         <button class="tf-button w208" type="submit">Save</button>

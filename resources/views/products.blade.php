@@ -11,15 +11,15 @@
                     <span class="text">{{ $product->name }}</span>
                 </div>
                 <div class="tf-breadcrumb-prev-next">
-                    <a href="#" class="tf-breadcrumb-prev hover-tooltip center">
+                    <a href="{{ $previousProduct !== null ? route('products', $previousProduct->slug)  : '#' }}" class="tf-breadcrumb-prev hover-tooltip center">
                         <i class="icon icon-arrow-left"></i>
                         <!-- <span class="tooltip">Cotton jersey top</span> -->
                     </a>
-                    <a href="#" class="tf-breadcrumb-back hover-tooltip center">
+                    <a href="{{ route('shop') }}" class="tf-breadcrumb-back hover-tooltip center">
                         <i class="icon icon-shop"></i>
                         <!-- <span class="tooltip">Back to Women</span> -->
                     </a>
-                    <a href="#" class="tf-breadcrumb-next hover-tooltip center">
+                    <a href="{{ $nextProduct !== null ? route('products', $nextProduct->slug)  : '#' }}" class="tf-breadcrumb-next hover-tooltip center">
                         <i class="icon icon-arrow-right"></i>
                         <!-- <span class="tooltip">Cotton jersey top</span> -->
                     </a>
@@ -55,3 +55,9 @@
         </div>
     </section>
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('js/zoom.js') }}"></script>
+    <script src="{{ asset('js/model-viewer.min.js') }}"></script>
+
+@endpush
